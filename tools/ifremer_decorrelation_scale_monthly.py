@@ -2,6 +2,7 @@
 
 # Objectives of Notebook: Compute the decorrelation scale on a monthly basis
 
+#Path to access python functions
 import sys
 sys.path.append('../tools/')
 
@@ -14,50 +15,17 @@ from monthly_mean import monthly_average
 from decorrelation_ts import decor_scale
 
 #set time and space variables
-nt, nlon, nlat = 8400, 360, 133
+nt, nlon, nlat = 8400, 360, 133    
 
-#Set filename
-filename = '../data/ifremer_swh_daily_binned_data_93_16_bia.nc'
+#call data: 
+swh, time, lat, lon = import_data('IFREMER_swh')
 
-#set nc variable: 
-nc =  Dataset(filename, 'r')
+#Use monthly average function to partition data and time into monthly segments:
+swh_month_dict = monthly_average(time, swh, size = '3d')
 
-#call data
-swh = nc.variables['swh'][:]
-lon = nc.variables['lon'][:]
-lat = nc.variables['lat'][:]
-time_i = num2date(nc.variables['time'][:], nc.variables['time'].units) 
-
-#resrict data to -66 to 66:
-ii = np.where(abs(lat) <= 66)[0]
-swh = swh[:,ii,:]
-lat = lat[ii]
-
-#find initial and final indices: 
-#create year vector: 
-years = np.array([y.year for y in time_i])
-
-#create boolean arrays and combine them:
-ind_92 = years != 1992
-ind_16 = years != 2016
-ind_time = ind_92*ind_16
-
-#use the compress function to find all indices that do not lie in 2016 and extract slices of matirx along the time axis from swh
-swh_c = np.compress(ind_time, swh, axis = 0)
-
-#extract the time steps: 
-time_c = time_i[ind_time]
-
-#Calculate monthly average
-swh_month_data = monthly_average(date_time = time_c, data = swh_c, size = '3d')
-
-#For swh:
-swh_monthly_time = np.ma.array(swh_month_data['time'])
-swh_monthly_data = np.ma.array(swh_month_data['data'])
-swh_monthly_mean = np.ma.array(swh_month_data['mean'])
-swh_monthly_median = np.ma.array(swh_month_data['median'])
-swh_monthly_std = np.ma.array(swh_month_data['std'])
-swh_monthly_n = np.ma.array(swh_month_data['N'])
+#Initialize monthly partitioned swh and time:
+swh_monthly_time = np.ma.array(swh_month_dict['time'])
+swh_monthly_data = np.ma.array(swh_month_dict['data'])
 
 #Compute decorrelation time scales 
 #set variables 
@@ -83,7 +51,6 @@ for itime in range(0,ntime):
             #Do not preform decorrelation analysis if time series has all masked values. 
             if ts_grid.mask.all() == False:  
             
-                
                 #Count the number of data point in the time series 
                 ndata = np.count_nonzero(~np.ma.getmask(ts_grid))
                         
@@ -110,11 +77,8 @@ for itime in range(0,ntime):
 
 #Save data in a NetCDF file: 
 #Initialize variables  
-output = '/zdata/downloads/colosi_data_bk/ucsd_lib_data_repo/IFREMER_swh_decor_time_scale.nc'
+output = '../data/IFREMER_swh_decor_time_scale.nc'
 summary = 'Data contained in this netCDF file is derived from the French Research Institute for Exploitation of the Sea (IFREMER) cross-calibrated along-track satellite altimetry significant wave height (SWH) product (ftp://ftp.ifremer.fr/ifremer/cersat/products/swath/altimeters/waves). Thus, this data is an intermediate product. Here, the decorrelation time scales are computed from integrals of the lagged covariance for each month from January 1993 to December 2015 across the globe from 66N to 66S. Decorrelation time scales are stored in a 3-dimensional (time, latitude, longitude) masked array.'
 
 #Save in NetCDF
 save_netcdf.save_netcdf_decor_scale(decor, lon, lat, swh_monthly_time, output, summary)
-                    
-#Save data in a npz file: 
-np.savez('/zdata/downloads/colosi_data_bk/npz_data/decor_scale/monthly_global_ds_ifremer_swh_int', swh_time_monthly = swh_monthly_time, swh_decor_monthly = decor, swh_autocor = autocor, swh_autocor_mask = np.ma.getmask(autocor))
