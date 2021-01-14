@@ -1,10 +1,10 @@
 # Source Code for
 
-Colosi, Luke V, Sarah T Gille, and Ana B Villas Bôas. The seasonal cycle of significant waveheight in the ocean: Local vs remote forcing.Journal of Geophysical Research: Oceans,in preparation
+Colosi, Luke V, Sarah T Gille, and Ana B Villas Bôas. The seasonal cycle of significant waveheight in the ocean: Local vs remote forcing.Journal of Geophysical Research: Oceans, in finalization stage.
 
 # Abstract
 
-Significant wave height (SWH) stems from a combination of locally generated "wind sea" and remotely generated "swell" waves. In the Northern and Southern Hemispheres, wave heights typically undergo a sinusoidal annual cycle, with larger SWH in winter in response to seasonal changes in high-latitude storm patterns that generate equatorward propagating swell. In the California coastal region, local expansion fan wind events occur in boreal spring and summer, leading to a wind speed (WSP) annual cycle with a distinct maximum in boreal spring and local deviations from the expected hemispheric-scale annual cycle in SWH. Other ocean regions with a WSP annual cycle reaching a maximum in late spring, summer, or early fall are designated as seasonal wind anomaly regions (SWARs). In this study, intra-annual variability of surface gravity waves is analyzed globally using two decades of satellite-derived SWH and WSP data. The phasing of the annual cycle is used as a metric to identify SWARs. Global maps of probability of swell based on wave age confirm that during the spring and summer months the wave field in SWARs is typically dominated by locally forced waves a higher percentage of the time than in surrounding regions. The magnitude of the deviation in the SWH annual cycle is determined by the exposure to swell and characteristics of the wave field within the region. We find that local winds have a more pronounced impact on Northern Hemisphere SWARs than on Southern Hemisphere SWARs due to the larger amplitude cycle of Northern Hemisphere winds. 
+Significant wave height (SWH) stems from a combination of locally generated "wind-sea" and remotely generated "swell" waves. In the Northern and Southern Hemispheres, wave heights typically undergo a sinusoidal annual cycle, with larger SWH in winter in response to seasonal changes in high-latitude storm patterns that generate equatorward propagating swell.  However, some locations deviate from this hemispheric-scale seasonal pattern in SWH. For example, in the California coastal region, local wind events occur in boreal spring and summer, leading to a wind speed (WSP) annual cycle with a distinct maximum in boreal spring and a corresponding local response in SWH\@. Here ocean regions with a WSP annual cycle reaching a maximum in late spring, summer, or early fall are designated as seasonal wind anomaly regions (SWARs). Intra-annual variability of surface gravity waves is analyzed globally using two decades of satellite-derived SWH and WSP data. The phasing of the WSP annual cycle is used as a metric to identify SWARs. Global maps of probability of swell based on wave age confirm that during the spring and summer months, locally forced waves are more statistically more likely in SWARs than in surrounding regions. The magnitude of the deviation in the SWH annual cycle is determined by the exposure to swell and characteristics of the wave field within the region. Local winds have a more identifiable impact on Northern Hemisphere SWARs than on Southern Hemisphere SWARs due to the larger seasonality of Northern Hemisphere winds. 
 
 # Plain Language Summary
 
@@ -12,22 +12,23 @@ At the ocean surface, wave height can give insight into ocean-atmosphere interac
 
 # Authors 
 * [Luke Colosi](https://lcolosi.github.io/)<<lcolosi@ucsd.edu>>
-* [Bia Villas Boas](https://scripps.ucsd.edu/profiles/avillasboas) <<avillasboas@ucsd.edu>>
+* [Bia Villas Boas](https://biavillasboas.github.io/) <<avillasboas@ucsd.edu>>
 * [Sarah T. Gille](http://www-pord.ucsd.edu/~sgille/) <<sgille@ucsd.edu>>
 
 # Data
-All model output analyzed in this paper is availabe for download here (insert doi url).
+CCMP Version-2.0 vector wind analysis data produced by Remote Sensing Systems is available at http://www.remss.com/measurements/ccmp/. Registration for an ftp account is required.
+The satellite altimetry significant wave height data produced by the French Research Institute for Exploitation of the Sea (IFREMER) is publically available at ftp://ftp.ifremer.fr/ifremer/cersat/products/swath/altimeters/waves. WAVEWATCH 3 hindcast significant wave height, surface wind velocity, and peak wave frequency is also produced by IFREMER and is publically available at  ftp://ftp.ifremer.fr/ifremer/ww3/HINDCAST. Intermediate data products including processed IFREMER, CCMP2, and WW3 data along with decorrelation time scales, weighted least-squares fit parameters and uncertainties, and probability of swell produced from CCMP2, IFREMER, and WW3 products are available through the [University of California, San Diego library](insert collection url).
 
 # Funding
 This work was supported by the NASA SWOT (awards NNX16AH67G and 80NSSC20K1136) and Ocean Vector Winds Science Teams (award 80NSSC19K0059), by a NASA Earth and Space Science Fellowship awarded to Ana Villas B\^oas, and by the Hiestand Scholars program.
 
 # How to use this repository
 
-All figures in Colosi et al. (2020) can be reproduced using the Python scripts and notebooks from this repository and the processed SWH, WSP and fp [data](insert collection url). To do so, follow these steps:
+All figures in Colosi et al. (2021) can be reproduced using the Python scripts from this repository and the processed SWH, WSP and fp [data](insert collection url). To do so, follow these steps:
 
 1. Make a local copy of this repository by either cloning or downloading it.
 
-2. Download the processed SWH, WSP and fp [data](insert collection url), untar the files, and move all three directories to `data` in the project root. After doing so, your directory three should look like this:
+2. Download the processed SWH, WSP and fp [data](insert collection url), untar the files, and move all eight directories to `data` in the project root. After doing so, your directory tree should look like this:
 
 ```
 WaveClimatology/
@@ -45,7 +46,7 @@ WaveClimatology/
 
 `conda env create -f environment.yml`
 
-from the project root.
+from the project root to create the environment from the .yml file and run `conda activate waveclimate` to activate the environment.
 
 4. If you follow the steps above you should be able to reproduce all figures, by running `python figXX.py` from the `src` directory without having to adjust any paths.
 
@@ -53,4 +54,4 @@ from the project root.
 
 If you wish to use the code from this repository, you may cite it as: 
 
-Colosi, Luke V. (2020, November 3). Source code for: 'The seasonal cycle of significant waveheight in the ocean: Local vs remote forcing'. Zenodo. (insert zenodo url)
+Colosi, Luke V. (2020, November 3). Source code for: 'The Seasonal Cycle of Significant Wave Height in the Ocean:  Local vs Remote Forcing'. Zenodo. (insert zenodo url)
