@@ -7,7 +7,7 @@ def detrend(data):
     """
     detrend(data)
 
-        Function for removing a linear trend from a 1 dimensional data series.
+        Function for removing a linear trend from a 1 dimensional data series, but retains the mean.
 
         Parameters
         ----------
@@ -26,25 +26,24 @@ def detrend(data):
 
     # import libraries
     import numpy as np
-    from unweighted_least_square_fit import least_square_fit
+    from lsf import least_square_fit
 
     # Check if data is a 1 dimensional array
-    assert data.ndim != 1, "Data is not a one dimensional array"
+    assert data.ndim == 1, "Data is not a one dimensional array"
 
     # fit a linear trend at grid point:
     data_trend, x_trend = least_square_fit(
         data, trend="linear", parameters=2, period=12
     )
-
+    
     # initialize time vector and linear trend:
     time = np.arange(1, len(data) + 1, 1)
-    linear_trend = x_trend[1] * time
+    linear_trend = x_trend[0] + x_trend[1] * time
 
     # remove linear trend:
-    data_detrend = data - linear_trend
+    data_detrend = data - linear_trend + np.mean(linear_trend)
 
     return data_detrend
-
 
 ########### Unweighted least squares fit Function ###########
 def least_square_fit(data, trend, parameters, period):
