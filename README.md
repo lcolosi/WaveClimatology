@@ -37,11 +37,15 @@ WaveClimatology/
 │   ├── ccmp2_wsp
 |   ├── ww3_swh
 │   ├── ww3_wsp
-│   └── ww3_fp
+│   ├── ww3_fp
+│   ├── lsf_parameters
+│   ├── decor_scales
+│   └── prob_swell
 ├── figs
 ├── src
 └── tools
 ```
+
 3. Make sure that you create an environment with the package versions specified in `environment.yml`. If you are using [Conda](https://docs.conda.io/en/latest/) you can run 
 
 `conda env create -f environment.yml`
@@ -54,4 +58,4 @@ from the project root to create the environment from the .yml file and run `cond
 
 If you wish to use the code from this repository, you may cite it as: 
 
-Colosi, Luke V. (2020, November 3). Source code for: 'The Seasonal Cycle of Significant Wave Height in the Ocean:  Local vs Remote Forcing'. Zenodo. (insert zenodo url)
+Colosi, Luke V. (2021, January 20). Source code for: 'The Seasonal Cycle of Significant Wave Height in the Ocean:  Local vs Remote Forcing'. Zenodo. (insert zenodo url)
