@@ -6,7 +6,8 @@ import sys
 sys.path.append("../tools/")
 
 # Path to access intermediate data
-data_path = "../data/"
+data_path_c = "../data/ccmp2_wsp/"
+data_path_decor = "../data/decor_scales/"
 
 # Import Libraries
 import numpy as np
@@ -22,7 +23,7 @@ from save_netcdf_fields import save_netcdf_lsf_parameters
 nt, nlon, nlat = 12, 360, 133
 
 # Call wsp data:
-wsp, time, lat, lon = import_data("CCMP2_wsp", data_path)
+wsp, time, lat, lon = import_data("CCMP2_wsp", data_path_c)
 
 # Calculate monthly climatologies
 wsp_clima_dict = clima_mean(date_time=np.ma.array(time), data=wsp)
@@ -31,7 +32,7 @@ wsp_clima_std = np.ma.array(wsp_clima_dict["std"])
 wsp_clima_n = np.ma.array(wsp_clima_dict["N"])
 
 # call monthly decorrelation scale
-nc = Dataset(data_path + "CCMP2_wsp_decor_time_scale.nc", "r")
+nc = Dataset(data_path_decor + "CCMP2_wsp_decor_time_scale.nc", "r")
 decor = nc.variables["decor_scale"][:]
 time_decor = num2date(nc.variables["time"][:], nc.variables["time"].units)
 

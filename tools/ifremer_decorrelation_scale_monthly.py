@@ -8,7 +8,7 @@ import sys
 sys.path.append("../tools/")
 
 # Path to access intermediate data
-data_path = "../data/"
+data_path = "../data/ifremer_swh/"
 
 # libraries
 import numpy as np

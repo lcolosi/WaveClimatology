@@ -10,7 +10,11 @@ import sys
 sys.path.append("../tools/")
 
 # Path to access intermediate data
-data_path = "../data/"
+data_path_i = "../data/ifremer_swh/"
+data_path_c = "../data/ccmp2_wsp/"
+data_path_ws = "../data/ww3_swh/"
+data_path_ww = "../data/ww3_wsp/"
+data_path_decor = "../data/decor_scales/"
 
 # libraries
 import numpy as np
@@ -28,32 +32,32 @@ from regional_clima_figs import regional_clima, regional_clima_plot
 import cartopy_figs as cart
 
 # call IFREMER SWH, CCMP2 WSP, WW3 SWH, and WW3 WSP processed data:
-swh_i, time_i, lat_i, lon_i = import_data("IFREMER_swh", data_path)
-wsp_c, time_c, lat_c, lon_c = import_data("CCMP2_wsp", data_path)
-swh_w, time_ws, lat_ws, lon_ws = import_data("WW3_swh", data_path)
-wsp_w, time_ww, lat_ww, lon_ww = import_data("WW3_wsp", data_path)
+swh_i, time_i, lat_i, lon_i = import_data("IFREMER_swh", data_path_i)
+wsp_c, time_c, lat_c, lon_c = import_data("CCMP2_wsp", data_path_c)
+swh_w, time_ws, lat_ws, lon_ws = import_data("WW3_swh", data_path_ws)
+wsp_w, time_ww, lat_ww, lon_ww = import_data("WW3_wsp", data_path_ww)
 
 # Call decorrelation time scales
 ###### IFREMER SWH ######
-nc_swh_i = Dataset(data_path + "IFREMER_swh_decor_time_scale.nc", "r")
+nc_swh_i = Dataset(data_path_decor + "IFREMER_swh_decor_time_scale.nc", "r")
 decor_swh_i = nc_swh_i.variables["decor_scale"][:]
 time_decor_swh_i = num2date(
     nc_swh_i.variables["time"][:], nc_swh_i.variables["time"].units
 )
 ###### CCMP2 WSP ######
-nc_wsp_c = Dataset(data_path + "CCMP2_wsp_decor_time_scale.nc", "r")
+nc_wsp_c = Dataset(data_path_decor + "CCMP2_wsp_decor_time_scale.nc", "r")
 decor_wsp_c = nc_wsp_c.variables["decor_scale"][:]
 time_decor_wsp_c = num2date(
     nc_wsp_c.variables["time"][:], nc_wsp_c.variables["time"].units
 )
 #### WW3 SWH ####
-nc_swh_w = Dataset(data_path + "WW3_swh_decor_time_scale.nc", "r")
+nc_swh_w = Dataset(data_path_decor + "WW3_swh_decor_time_scale.nc", "r")
 decor_swh_w = nc_swh_w.variables["decor_scale"][:]
 time_decor_swh_w = num2date(
     nc_swh_w.variables["time"][:], nc_swh_w.variables["time"].units
 )
 #### WW3 WSP ####
-nc_wsp_w = Dataset(data_path + "WW3_wsp_decor_time_scale.nc", "r")
+nc_wsp_w = Dataset(data_path_decor + "WW3_wsp_decor_time_scale.nc", "r")
 decor_wsp_w = nc_wsp_w.variables["decor_scale"][:]
 time_decor_wsp_w = num2date(
     nc_wsp_w.variables["time"][:], nc_wsp_w.variables["time"].units

@@ -12,7 +12,8 @@ import sys
 sys.path.append("../tools/")
 
 # Path to access intermediate data
-data_path = "../data/"
+data_path_i = "../data/ifremer_swh/"
+data_path_c = "../data/ccmp2_wsp/"
 
 # libraries
 import numpy as np
@@ -27,8 +28,8 @@ from statistical_moments_temporal import stat_moments_temporal
 import cartopy_figs as cart
 
 # call IFREMER SWH and CCMP2 WSP processed data:
-swh, time_s, lat_s, lon_s = import_data("IFREMER_swh", data_path)
-wsp, time_w, lat_w, lon_w = import_data("CCMP2_wsp", data_path)
+swh, time_s, lat_s, lon_s = import_data("IFREMER_swh", data_path_i)
+wsp, time_w, lat_w, lon_w = import_data("CCMP2_wsp", data_path_c)
 
 # Compute statistical moments seasonally
 swh_stats_s = stat_moments_temporal(swh, time_s, "seasonally", "sample")

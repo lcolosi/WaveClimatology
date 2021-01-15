@@ -19,7 +19,9 @@ import sys
 sys.path.append("../tools/")
 
 # Path to access intermediate data
-data_path = "../data/"
+data_path_i = "../data/ifremer_swh/"
+data_path_c = "../data/ccmp2_wsp/"
+data_path_decor = "../data/decor_scales/"
 
 # libraries
 import numpy as np
@@ -37,16 +39,16 @@ from regional_clima_figs import regional_clima, regional_clima_plot
 import cartopy_figs as cart
 
 # call IFREMER SWH and CCMP2 WSP processed data:
-swh, time_s, lat_s, lon_s = import_data("IFREMER_swh", data_path)
-wsp, time_w, lat_w, lon_w = import_data("CCMP2_wsp", data_path)
+swh, time_s, lat_s, lon_s = import_data("IFREMER_swh", data_path_i)
+wsp, time_w, lat_w, lon_w = import_data("CCMP2_wsp", data_path_c)
 
 # Call decorrelation time scales
 ###### SWH ######
-nc_swh = Dataset(data_path + "IFREMER_swh_decor_time_scale.nc", "r")
+nc_swh = Dataset(data_path_decor + "IFREMER_swh_decor_time_scale.nc", "r")
 decor_swh = nc_swh.variables["decor_scale"][:]
 time_decor_swh = num2date(nc_swh.variables["time"][:], nc_swh.variables["time"].units)
 ###### WSP ######
-nc_wsp = Dataset(data_path + "CCMP2_wsp_decor_time_scale.nc", "r")
+nc_wsp = Dataset(data_path_decor + "CCMP2_wsp_decor_time_scale.nc", "r")
 decor_wsp = nc_wsp.variables["decor_scale"][:]
 time_decor_wsp = num2date(nc_wsp.variables["time"][:], nc_wsp.variables["time"].units)
 

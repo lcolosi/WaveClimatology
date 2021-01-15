@@ -6,7 +6,9 @@ import sys
 sys.path.append("../tools/")
 
 # Path to access intermediate data
-data_path = "../data/"
+data_path_ws = "../data/ww3_swh/"
+data_path_ww = "../data/ww3_wsp/"
+data_path_decor = "../data/decor_scales/"
 
 # Import Libraries
 import numpy as np
@@ -22,8 +24,8 @@ from save_netcdf_fields import save_netcdf_lsf_parameters
 nt, nlon, nlat = 12, 360, 133
 
 # Call data:
-wsp, time, lat, lon = import_data("WW3_wsp", data_path)
-swh, time, lat, lon = import_data("WW3_swh", data_path)
+wsp, time, lat, lon = import_data("WW3_wsp", data_path_ww)
+swh, time, lat, lon = import_data("WW3_swh", data_path_ws)
 
 # Calculate the monthly averaged from 1993 to 2015
 #### SWH ####
@@ -39,11 +41,11 @@ wsp_clima_n = np.ma.array(wsp_clima_dict["N"])
 
 # call monthly decorrelation scale
 #### SWH ####
-nc_swh = Dataset(data_path + "WW3_swh_decor_time_scale.nc", "r")
+nc_swh = Dataset(data_path_decor + "WW3_swh_decor_time_scale.nc", "r")
 decor_swh = nc_swh.variables["decor_scale"][:]
 time_decor_swh = num2date(nc_swh.variables["time"][:], nc_swh.variables["time"].units)
 #### WSP ####
-nc_wsp = Dataset(data_path + "WW3_wsp_decor_time_scale.nc", "r")
+nc_wsp = Dataset(data_path_decor + "WW3_wsp_decor_time_scale.nc", "r")
 decor_wsp = nc_wsp.variables["decor_scale"][:]
 time_decor_wsp = num2date(nc_wsp.variables["time"][:], nc_wsp.variables["time"].units)
 

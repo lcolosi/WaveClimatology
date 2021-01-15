@@ -10,7 +10,8 @@ import sys
 sys.path.append("../tools/")
 
 # Path to access intermediate data
-data_path = "../data/"
+data_path_lsf = "../data/lsf_parameters/"
+data_path_ps = "../data/prob_swell/"
 
 # libraries
 import numpy as np
@@ -25,8 +26,8 @@ import matplotlib.patches as mpatches
 import cartopy_figs as cart
 
 # Set filenames
-filename_lsf = data_path + "IFREMER_swh_lsf_parameters.nc"
-filename_ps = data_path + "WW3_probability_swell.nc"
+filename_lsf = data_path_lsf + "IFREMER_swh_lsf_parameters.nc"
+filename_ps = data_path_ps + "WW3_probability_swell.nc"
 
 # Call wlsf phase parameter data:
 nc_i = Dataset(filename_lsf, "r")

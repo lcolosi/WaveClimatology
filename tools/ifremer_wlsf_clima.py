@@ -6,7 +6,8 @@ import sys
 sys.path.append("../tools/")
 
 # Path to access intermediate data
-data_path = "../data/"
+data_path_i = "../data/ifremer_swh/"
+data_path_decor = "../data/decor_scales/"
 
 # Import Libraries
 import numpy as np
@@ -34,7 +35,7 @@ swh_clima_n = np.ma.array(swh_clima_dict["N"])
 swh_clima_std_m = np.ma.masked_equal(swh_clima_std, 0)
 
 # call monthly decorrelation scale
-nc = Dataset(data_path + "IFREMER_swh_decor_time_scale.nc", "r")
+nc = Dataset(data_path_decor + "IFREMER_swh_decor_time_scale.nc", "r")
 decor = nc.variables["decor_scale"][:]
 time_decor = num2date(nc.variables["time"][:], nc.variables["time"].units)
 

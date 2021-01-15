@@ -12,7 +12,7 @@ import sys
 sys.path.append("../tools/")
 
 # Path to access intermediate data
-data_path = "../data/"
+data_path = "../data/lsf_parameters/"
 
 # libraries
 import numpy as np
