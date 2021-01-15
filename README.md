@@ -37,11 +37,15 @@ WaveClimatology/
 │   ├── ccmp2_wsp
 |   ├── ww3_swh
 │   ├── ww3_wsp
-│   └── ww3_fp
+│   ├── ww3_fp
+│   ├── lsf_parameters
+│   ├── decor_scales
+│   └── prob_swell
 ├── figs
 ├── src
 └── tools
 ```
+
 3. Make sure that you create an environment with the package versions specified in `environment.yml`. If you are using [Conda](https://docs.conda.io/en/latest/) you can run 
 
 `conda env create -f environment.yml`
