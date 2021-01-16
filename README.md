@@ -4,7 +4,7 @@ Colosi, Luke V, Sarah T Gille, and Ana B Villas Bôas. The seasonal cycle of sig
 
 # Abstract
 
-Significant wave height (SWH) stems from a combination of locally generated "wind-sea" and remotely generated "swell" waves. In the Northern and Southern Hemispheres, wave heights typically undergo a sinusoidal annual cycle, with larger SWH in winter in response to seasonal changes in high-latitude storm patterns that generate equatorward propagating swell.  However, some locations deviate from this hemispheric-scale seasonal pattern in SWH. For example, in the California coastal region, local wind events occur in boreal spring and summer, leading to a wind speed (WSP) annual cycle with a distinct maximum in boreal spring and a corresponding local response in SWH\@. Here ocean regions with a WSP annual cycle reaching a maximum in late spring, summer, or early fall are designated as seasonal wind anomaly regions (SWARs). Intra-annual variability of surface gravity waves is analyzed globally using two decades of satellite-derived SWH and WSP data. The phasing of the WSP annual cycle is used as a metric to identify SWARs. Global maps of probability of swell based on wave age confirm that during the spring and summer months, locally forced waves are more statistically more likely in SWARs than in surrounding regions. The magnitude of the deviation in the SWH annual cycle is determined by the exposure to swell and characteristics of the wave field within the region. Local winds have a more identifiable impact on Northern Hemisphere SWARs than on Southern Hemisphere SWARs due to the larger seasonality of Northern Hemisphere winds. 
+Significant wave height (SWH) stems from a combination of locally generated "wind-sea" and remotely generated "swell" waves. In the Northern and Southern Hemispheres, wave heights typically undergo a sinusoidal annual cycle, with larger SWH in winter in response to seasonal changes in high-latitude storm patterns that generate equatorward propagating swell.  However, some locations deviate from this hemispheric-scale seasonal pattern in SWH. For example, in the California coastal region, local wind events occur in boreal spring and summer, leading to a wind speed (WSP) annual cycle with a distinct maximum in boreal spring and a corresponding local response in SWH. Here ocean regions with a WSP annual cycle reaching a maximum in late spring, summer, or early fall are designated as seasonal wind anomaly regions (SWARs). Intra-annual variability of surface gravity waves is analyzed globally using two decades of satellite-derived SWH and WSP data. The phasing of the WSP annual cycle is used as a metric to identify SWARs. Global maps of probability of swell based on wave age confirm that during the spring and summer months, locally forced waves are more statistically more likely in SWARs than in surrounding regions. The magnitude of the deviation in the SWH annual cycle is determined by the exposure to swell and characteristics of the wave field within the region. Local winds have a more identifiable impact on Northern Hemisphere SWARs than on Southern Hemisphere SWARs due to the larger seasonality of Northern Hemisphere winds. 
 
 # Plain Language Summary
 
@@ -12,7 +12,7 @@ At the ocean surface, wave height can give insight into ocean-atmosphere interac
 
 # Authors 
 * [Luke Colosi](https://lcolosi.github.io/)<<lcolosi@ucsd.edu>>
-* [Bia Villas Boas](https://biavillasboas.github.io/) <<avillasboas@ucsd.edu>>
+* [Bia Villas Bôas](https://biavillasboas.github.io/) <<avillasboas@ucsd.edu>>
 * [Sarah T. Gille](http://www-pord.ucsd.edu/~sgille/) <<sgille@ucsd.edu>>
 
 # Data
@@ -20,7 +20,7 @@ CCMP Version-2.0 vector wind analysis data produced by Remote Sensing Systems is
 The satellite altimetry significant wave height data produced by the French Research Institute for Exploitation of the Sea (IFREMER) is publically available at ftp://ftp.ifremer.fr/ifremer/cersat/products/swath/altimeters/waves. WAVEWATCH 3 hindcast significant wave height, surface wind velocity, and peak wave frequency is also produced by IFREMER and is publically available at  ftp://ftp.ifremer.fr/ifremer/ww3/HINDCAST. Intermediate data products including processed IFREMER, CCMP2, and WW3 data along with decorrelation time scales, weighted least-squares fit parameters and uncertainties, and probability of swell produced from CCMP2, IFREMER, and WW3 products are available through the [University of California, San Diego library](insert collection url).
 
 # Funding
-This work was supported by the NASA SWOT (awards NNX16AH67G and 80NSSC20K1136) and Ocean Vector Winds Science Teams (award 80NSSC19K0059), by a NASA Earth and Space Science Fellowship awarded to Ana Villas B\^oas, and by the Hiestand Scholars program.
+This work was supported by the NASA SWOT (awards NNX16AH67G and 80NSSC20K1136) and Ocean Vector Winds Science Teams (award 80NSSC19K0059), by a NASA Earth and Space Science Fellowship awarded to Ana Villas Bôas, and by the Hiestand Scholars program.
 
 # How to use this repository
 
