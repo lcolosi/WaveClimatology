@@ -108,7 +108,7 @@ for itime in range(0, ntime):
 
 # Save data in a NetCDF file:
 # Initialize variables
-output = "../data/WW3_swh_decor_time_scale.nc"
+output = "../data/decor_scales/WW3_swh_decor_time_scale.nc"
 summary = "Data contained in this netCDF file is derived from the wave hindcast significant wave height (SWH) product produced by French Research Institute for Exploitation of the Sea (IFREMER) using the WAVE-height, WATer depth and Current Hindcasting III (WW3) wave model forced by Climate Forecast System Reanalysis (CFSR) winds (ftp://ftp.ifremer.fr/ifremer/ww3/HINDCAST). Thus, this data is an intermediate product. Here, the decorrelation time scales for Hs are computed from integrals of the lagged covariance for each month from January 1993 to December 2015 across the globe from 66N to 66S. Decorrelation time scales are stored in a 3-dimensional (time, latitude, longitude) masked array."
 
 # Save in NetCDF

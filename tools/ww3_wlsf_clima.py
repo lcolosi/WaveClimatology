@@ -257,7 +257,7 @@ for ilat in range(0, nlat):
 
 # Save WW3 swh and wsp data in netCDF files:
 ########### SWH ###########
-output_ws = "../data/WW3_swh_lsf_parameters.nc"
+output_ws = "../data/lsf_parameters/WW3_swh_lsf_parameters.nc"
 summary_ws = "Data contained in this netCDF file is derived from the wave hindcast significant wave height (SWH) product produced by French Research Institute for Exploitation of the Sea (IFREMER) using the WAVE-height, WATer depth and Current Hindcasting III (WW3) wave model forced by Climate Forecast System Reanalysis (CFSR) winds (ftp://ftp.ifremer.fr/ifremer/ww3/HINDCAST). Thus, this data is an intermediate product. Here, the parameters of the weighted least-squares fit to the mean, annual, and semi-annual cycles of SWH monthly climatologies, computed from the WW3 SWH daily and 1 degree by 1 degree averaged data spanning from 1 January 1993 to 31 December 2015, along their uncertainties are stored in a 2-dimensional (latitude, longitude) masked array. Parameters include annual cycle amplitude and phase, semi-annual cycle amplitude and phase, and fraction of variance explained by model. Models were only fitted to monthly climatologies that had at least one data point per season and a total of 5 or more data points. Grid points over land or with insufficient data are masked. Uncertainties, computed using error propagation for amplitude and phase, represent the standard error of the mean amplitude and phase. Uncertainty is not computed for fraction of variance explained. Phase is in units of radians. Convert to units of months by multiplying annual phase by 6/pi and semi-annual phase by 3/pi."
 
 # Save to netCDF file:
@@ -279,7 +279,7 @@ save_netcdf_lsf_parameters(
 
 
 ########### WSP ###########
-output_ww = "../data/WW3_wsp_lsf_parameters.nc"
+output_ww = "../data/lsf_parameters/WW3_wsp_lsf_parameters.nc"
 summary_ww = "Data contained in this netCDF file is derived from the wave hindcast wind speed (WSP) product produced by French Research Institute for Exploitation of the Sea (IFREMER) using the WAVE-height, WATer depth and Current Hindcasting III (WW3) wave model forced by Climate Forecast System Reanalysis (CFSR) winds (ftp://ftp.ifremer.fr/ifremer/ww3/HINDCAST). Thus, this data is an intermediate product. Here, the parameters of the weighted least-squares fit to the mean, annual, and semi-annual cycles of SWH monthly climatologies, computed from the WW3 WSP daily and 1 degree by 1 degree averaged data spanning from 1 January 1993 to 31 December 2015, along their uncertainties are stored in a 2-dimensional (latitude, longitude) masked array. Parameters include annual cycle amplitude and phase, semi-annual cycle amplitude and phase, and fraction of variance explained by model. Models were only fitted to monthly climatologies that had at least one data point per season and a total of 5 or more data points. Grid points over land or with insufficient data are masked. Uncertainties, computed using error propagation for amplitude and phase, represent the standard error of the mean amplitude and phase. Uncertainty is not computed for fraction of variance explained. Phase is in units of radians. Convert to units of months by multiplying annual phase by 6/pi and semi-annual phase by 3/pi. WW3 models WSP 10 meters above the ocean surface."
 
 # Save to netCDF file:

@@ -97,7 +97,7 @@ for itime in range(0, ntime):
 
 # Save data in a NetCDF file:
 # Initialize variables
-output = "../data/IFREMER_swh_decor_time_scale.nc"
+output = "../data/decor_scales/IFREMER_swh_decor_time_scale.nc"
 summary = "Data contained in this netCDF file is derived from the French Research Institute for Exploitation of the Sea (IFREMER) cross-calibrated along-track satellite altimetry significant wave height (SWH) product (ftp://ftp.ifremer.fr/ifremer/cersat/products/swath/altimeters/waves). Thus, this data is an intermediate product. Here, the decorrelation time scales are computed from integrals of the lagged covariance for each month from January 1993 to December 2015 across the globe from 66N to 66S. Decorrelation time scales for Hs are stored in a 3-dimensional (time, latitude, longitude) masked array."
 
 # Save in NetCDF

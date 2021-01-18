@@ -166,7 +166,7 @@ for iyear in np.unique(years):
         lon=grid_lon,
         lat=grid_lat,
         time=time_iyear,
-        output="../data/IFREMER_binned_alt_swh_%s" % iyear + ".nc",
+        output="../data/ifremer_swh/IFREMER_binned_alt_swh_%s" % iyear + ".nc",
         summary=summary,
     )
 
@@ -184,6 +184,6 @@ save_netcdf_binned_swh_wsp(
     grid_lon,
     grid_lat,
     time_array,
-    output="../data/IFREMER_binned_alt_wsp_swh_1993_2015.nc",
+    output="../data/ifremer_swh/IFREMER_binned_alt_wsp_swh_1993_2015.nc",
     summary=summary,
 )

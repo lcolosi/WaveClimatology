@@ -5,9 +5,8 @@ import sys
 
 sys.path.append("../tools/")
 
-# Path to access raw data
-# data_path = '../data/'
-data_path = "/zdata/downloads/ww3_CFSR/"
+# Path to access raw data (CHANGE PATH IF DATA IS NOT in /data DIRECTORY)
+data_path = '../data/'
 
 # Import Libraries
 import numpy as np
@@ -228,6 +227,6 @@ save_netcdf_prob_swell(
     lat=lat_wnd,
     monthly_time=np.arange(1, 13, 1),
     seasonal_time=np.arange(1, 4, 1),
-    output="../data/WW3_probability_swell.nc",
+    output="../data/prob_swell/WW3_probability_swell.nc",
     summary=summary,
 )

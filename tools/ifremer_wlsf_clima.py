@@ -23,7 +23,7 @@ from save_netcdf_fields import save_netcdf_lsf_parameters
 nt, nlon, nlat = 12, 360, 133
 
 # call data:
-swh, time, lat, lon = import_data("IFREMER_swh", data_path)
+swh, time, lat, lon = import_data("IFREMER_swh", data_path_i)
 
 # Calculate the monthly climatologies of swh from 1993 to 2015
 swh_clima_dict = clima_mean(date_time=np.ma.array(time), data=swh)
@@ -147,7 +147,7 @@ for ilat in range(0, nlat):
 
 # Save lsf parameters in netCDF files:
 # Initialize variables
-output = "../data/IFREMER_swh_lsf_parameters.nc"
+output = "../data/lsf_parameters/IFREMER_swh_lsf_parameters.nc"
 summary = "Data contained in this netCDF file is derived from the French Research Institute for Exploitation of the Sea (IFREMER) cross-calibrated along-track satellite altimetry significant wave height (SWH) product (ftp://ftp.ifremer.fr/ifremer/cersat/products/swath/altimeters/waves). Thus, this data is an intermediate product. Here, the parameters of the weighted least-squares fit to the mean, annual, and semi-annual cycles of SWH monthly climatologies, computed from the IFREMER binned SWH daily data collected from 1 January 1993 to 31 December 2015, along their uncertainties are stored in a 2-dimensional (latitude, longitude) masked array. Parameters include annual cycle amplitude and phase, semi-annual cycle amplitude and phase, and fraction of variance explained by model. Models were only fitted to monthly climatologies that had at least one data point per season and a total of 5 or more data points. Grid points over land or with insufficient data are masked. Uncertainties, computed using error propagation for amplitude and phase, represent the standard error of the mean amplitude and phase. Uncertainty is not computed for fraction of variance explained. Phase is in units of radians. Convert to units of months by multiplying annual phase by 6/pi and semi-annual phase by 3/pi."
 
 # Save to netCDF files:

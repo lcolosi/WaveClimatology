@@ -108,7 +108,7 @@ for itime in range(0, ntime):
 
 # Save data in a NetCDF file:
 # Initialize variables
-output = "../data/CCMP2_wsp_decor_time_scale.nc"
+output = "../data/decor_scales/CCMP2_wsp_decor_time_scale.nc"
 summary = "Data contained in this netCDF file is derived from the Cross Calibrated Multi-Platform version 2 (CCMP2) wind vector analysis produced by Remote Sensing Systems product (available at www.remss.com). Thus, this data is an intermediate product. Here, the decorrelation time scales are computed from integrals of the lagged covariance for each month from January 1993 to December 2015 across the globe from 66N to 66S. Decorrelation time scales for WSP are stored in a 3-dimensional (time, latitude, longitude) masked array."
 
 # Save in NetCDF

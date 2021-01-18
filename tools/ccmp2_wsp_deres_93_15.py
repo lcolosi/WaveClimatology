@@ -5,7 +5,7 @@ import sys
 
 sys.path.append("../tools/")
 
-# Path to access raw data (CHANGE PATH IF DATA IS NOT in /data DIRECTORY)
+# Path to access raw data (CHANGE PATH IF DATA IS NOT in ../data DIRECTORY)
 data_path = "../data/"
 
 # Import Libraries
@@ -127,6 +127,6 @@ for iyear in np.unique(years):
         lon=lon_dr,
         lat=lat_dr,
         time=time_iyear,
-        output="../data/CCMP2_deresolved_wsp_%s" % iyear + ".nc",
+        output="../data/ccmp2_wsp/CCMP2_deresolved_wsp_%s" % iyear + ".nc",
         summary=summary,
     )

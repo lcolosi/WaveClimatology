@@ -144,7 +144,7 @@ for ilat in range(0, nlat):
 
 # Save lsf parameters in netCDF files:
 # Initialize variables
-output = "../data/CCMP2_wsp_lsf_parameters.nc"
+output = "../data/lsf_parameters/CCMP2_wsp_lsf_parameters.nc"
 summary = "Data contained in this netCDF file is derived from the Cross Calibrated Multi-Platform version 2 (CCMP2) wind vector analysis produced by Remote Sensing Systems product (available at www.remss.com). Thus, this data is an intermediate product. Here, the parameters of the weighted least-squares fit to the mean, annual, and semi-annual cycles of wind speed (WSP) monthly climatologies, computed from CCMP2 WSP daily and 1 degree by 1 degree averaged data spanning from 1 January 1993 to 31 December 2015, along their uncertainties are stored in a 2-dimensional (latitude, longitude) masked array. Parameters include annual cycle amplitude and phase, semi-annual cycle amplitude and phase, and fraction of variance explained by model. Models were only fitted to monthly climatologies that had at least one data point per season and a total of 5 or more data points. Grid points over land or with insufficient data are masked. Uncertainties, computed using error propagation for amplitude and phase, represent the standard error of the mean amplitude and phase. Uncertainty is not computed for fraction of variance explained. Phase is in units of radians. Convert to units of months by multiplying annual phase by 6/pi and semi-annual phase by 3/pi. CCMP2 measures WSP 10 meters above the ocean surface."
 
 # Save in NetCDF
