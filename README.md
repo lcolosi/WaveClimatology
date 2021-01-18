@@ -16,8 +16,7 @@ At the ocean surface, wave height can give insight into ocean-atmosphere interac
 * [Sarah T. Gille](http://www-pord.ucsd.edu/~sgille/) <<sgille@ucsd.edu>>
 
 # Data
-CCMP Version-2.0 vector wind analysis data produced by Remote Sensing Systems is available at http://www.remss.com/measurements/ccmp/. Registration for an ftp account is required.
-The satellite altimetry significant wave height data produced by the French Research Institute for Exploitation of the Sea (IFREMER) is publically available at ftp://ftp.ifremer.fr/ifremer/cersat/products/swath/altimeters/waves. WAVEWATCH 3 hindcast significant wave height, surface wind velocity, and peak wave frequency is also produced by IFREMER and is publically available at  ftp://ftp.ifremer.fr/ifremer/ww3/HINDCAST. Intermediate data products including processed IFREMER, CCMP2, and WW3 data along with decorrelation time scales, weighted least-squares fit parameters and uncertainties, and probability of swell produced from CCMP2, IFREMER, and WW3 products are available through the [University of California, San Diego library](insert collection url).
+CCMP Version-2.0 vector wind analysis data produced by Remote Sensing Systems is available at http://www.remss.com/measurements/ccmp/. Registration for an ftp account is required. The satellite altimetry significant wave height data produced by the French Research Institute for Exploitation of the Sea (IFREMER) is publically available at ftp://ftp.ifremer.fr/ifremer/cersat/products/swath/altimeters/waves. WAVEWATCH 3 hindcast significant wave height, surface wind velocity, and peak wave frequency is also produced by IFREMER and is publically available at  ftp://ftp.ifremer.fr/ifremer/ww3/HINDCAST. Intermediate data products including processed IFREMER, CCMP2, and WW3 data along with decorrelation time scales, weighted least-squares fit parameters and uncertainties, and probability of swell produced from CCMP2, IFREMER, and WW3 products are available through the [University of California, San Diego library](insert collection url).
 
 # Funding
 This work was supported by the NASA SWOT (awards NNX16AH67G and 80NSSC20K1136) and Ocean Vector Winds Science Teams (award 80NSSC19K0059), by a NASA Earth and Space Science Fellowship awarded to Ana Villas Bôas, and by the Hiestand Scholars program.
@@ -28,7 +27,7 @@ All figures in Colosi et al. (2021) can be reproduced using the Python scripts f
 
 1. Make a local copy of this repository by either cloning or downloading it.
 
-2. Download the processed SWH, WSP and fp [data](insert collection url), untar the files, and move all eight directories to `data` in the project root. After doing so, your directory tree should look like this:
+2. Download the processed SWH, WSP and fp [data](insert collection url), untar the files, and move all seven directories to `data` in the project root. After doing so, your directory tree should look like this:
 
 ```
 WaveClimatology/
@@ -37,7 +36,6 @@ WaveClimatology/
 │   ├── ccmp2_wsp
 |   ├── ww3_swh
 │   ├── ww3_wsp
-│   ├── ww3_fp
 │   ├── lsf_parameters
 │   ├── decor_scales
 │   └── prob_swell
