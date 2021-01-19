@@ -28,7 +28,7 @@ nt, nlon, nlat = 8400, 360, 133
 wsp, time, lat, lon = import_data("CCMP2_wsp", data_path)
 
 # Use monthly average function to partition data and time into monthly segments
-wsp_month_dict = monthly_average(time, wsp)
+wsp_month_dict = monthly_average(np.array(time), wsp)
 
 # Initialize monthly partitioned wsp and time:
 wsp_monthly_time = np.ma.array(wsp_month_dict["time"])
@@ -38,9 +38,7 @@ wsp_monthly_data = np.ma.array(wsp_month_dict["data"])
 
 # set variables:
 ntime = wsp_monthly_data.shape[0]
-nmonth = [len(wsp_monthly_data[imonth]) for imonth in range(ntime)]
 decor = np.zeros((ntime, nlat, nlon))
-autocor = np.ma.masked_all([np.max(nmonth) * 2, nlat, nlon])
 
 # Loop over time
 for itime in range(0, ntime):
@@ -93,9 +91,7 @@ for itime in range(0, ntime):
 
                     # Save decorrelation time scale and autocorrelation function
                     decor[itime, ilat, ilon] = ds
-                    autocor_l = len(np.hstack((coef_neg, coef_pos)))
-                    autocor[:autocor_l, ilat, ilon] = np.hstack((coef_neg, coef_pos))
-
+                    
                 # Set decorrelation time scale to 1 if only one time step exists in the time series
                 elif ndata == 1:
 
@@ -104,7 +100,6 @@ for itime in range(0, ntime):
 
                     # Save decorrelation time scale and autocorrelation function
                     decor[itime, ilat, ilon] = ds
-                    autocor[:2, ilat, ilon] = np.ma.array((1, 0))
 
 # Save data in a NetCDF file:
 # Initialize variables
