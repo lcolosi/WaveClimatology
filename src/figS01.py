@@ -34,7 +34,21 @@ filename_ps = data_path_ps + "WW3_probability_swell.nc"
 nc_i = Dataset(filename_lsf, "r")
 lon_i = nc_i.variables["lon"][:]
 lat_i = nc_i.variables["lat"][:]
+a_amp = nc_i.variables["a_amp"][:]
 a_phase = nc_i.variables["a_phase"][:]
+a_amp_unc = nc_i.variables["a_amp_unc"][:]
+
+# Set noise to signal ratio criteria
+ns = 5 / 10
+
+# Mask not statistical significance ifremer and ccmp2 data
+######### Ifremer #########
+# Compute the relative uncertainty
+a_ratio = a_amp_unc / a_amp
+# Mask not statistically significant grid points
+a_mask = np.ma.getmask(np.ma.masked_greater_equal(a_ratio, (ns)))
+# Apply statistical significance masks
+a_phase_m = np.ma.masked_where(a_mask, a_phase)
 
 # Call probability of swell data:
 nc_ps = Dataset(filename_ps, "r")
@@ -42,7 +56,7 @@ lon_ps = nc_ps.variables["lon"][:]
 lat_ps = nc_ps.variables["lat"][:]
 prob_swell = nc_ps.variables["seasonal_prob_swell"][:]
 
-#Adjust prob_swell and longitude for plotting.
+# Adjust prob_swell and longitude for plotting.
 prob_swell, lon_ps = add_cyclic_point(prob_swell, coord=lon_ps)
 
 # Initialize variables for plotting
@@ -62,7 +76,7 @@ cart.set_subplots(
 cs1 = ax1.pcolormesh(
     lon_i,
     lat_i,
-    a_phase,
+    a_phase_m,
     vmin=-np.pi,
     vmax=np.pi,
     cmap=cmo.phase,
