@@ -19,6 +19,7 @@ from netCDF4 import Dataset
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
+from cartopy.util import add_cyclic_point
 import cmocean.cm as cmo
 import matplotlib.patches as mpatches
 
@@ -40,6 +41,9 @@ nc_ps = Dataset(filename_ps, "r")
 lon_ps = nc_ps.variables["lon"][:]
 lat_ps = nc_ps.variables["lat"][:]
 prob_swell = nc_ps.variables["seasonal_prob_swell"][:]
+
+#Adjust prob_swell and longitude for plotting.
+prob_swell, lon_ps = add_cyclic_point(prob_swell, coord=lon_ps)
 
 # Initialize variables for plotting
 projection = ccrs.PlateCarree(central_longitude=180.0)
