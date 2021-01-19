@@ -63,6 +63,14 @@ for itime in range(0, ntime):
                 # Proceed with decorrelation time scale calculation if time series has more than one data point.
                 if ndata > 1:
 
+                    # detrend grid point:
+                    ts_trend, x_trend = least_square_fit(
+                        data=ts_grid, trend="linear", parameters=2, period=None
+                    )
+
+                    # remove linear trend:
+                    ts_detrend = ts_grid - ts_trend
+
                     # Compute decorrelation time scale:
                     (
                         ds,

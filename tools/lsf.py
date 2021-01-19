@@ -35,7 +35,7 @@ def detrend(data):
     data_trend, x_trend = least_square_fit(
         data, trend="linear", parameters=2, period=12
     )
-    
+
     # initialize time vector and linear trend:
     time = np.arange(1, len(data) + 1, 1)
     linear_trend = x_trend[0] + x_trend[1] * time
@@ -44,6 +44,7 @@ def detrend(data):
     data_detrend = data - linear_trend + np.mean(linear_trend)
 
     return data_detrend
+
 
 ########### Unweighted least squares fit Function ###########
 def least_square_fit(data, trend, parameters, period):

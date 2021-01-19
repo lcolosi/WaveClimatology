@@ -42,7 +42,7 @@ for iyear in range(initial_year, final_year + 1, 1):
     # Wnd:
     files = sorted(glob.glob(data_path + "WW3-GLOB-30M_" + "%s" % iyear + "*_wnd.nc"))
     filenames_wnd += files
-    
+
 
 # Set longitude and latitude vectors
 ######## hs ########

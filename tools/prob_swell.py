@@ -6,7 +6,8 @@ import sys
 sys.path.append("../tools/")
 
 # Path to access raw data (CHANGE PATH IF DATA IS NOT in /data DIRECTORY)
-data_path = '../data/'
+# data_path = '../data/'
+data_path = "/zdata/downloads/ww3_CFSR/"
 
 # Import Libraries
 import numpy as np
@@ -52,85 +53,65 @@ nc_fp = Dataset(filenames_fp[0], "r")
 lon_fp = nc_fp.variables["longitude"][:]
 lat_fp = nc_fp.variables["latitude"][:]
 
-# Call Fp and WSP data from WW3 netcdf files
-######## fp ########
-# initialize masked array:
-time_fp = []
+# Set dimensions
+nt, nlat, nlon = len(filenames_wnd), len(lat_wnd), len(lon_wnd)
 
-# initialize counter:
-cn = 0
-
-# Loop through filenames:
-for f in filenames_fp:
-
-    # Set nc variable:
-    nc_fp = Dataset(f, "r")
-
-    # call peak frequency and time:
-    fp_h = nc_fp.variables["fp"][:]
-    itime = num2date(nc_fp.variables["time"][:], nc_fp.variables["time"].units)
-
-    # save the hourly wsp array and time:
-    if cn == 0:
-        fp = np.ma.copy(fp_h)
-    elif cn > 0:
-        fp = np.ma.concatenate((fp, fp_h), axis=0)
-    time_fp.append(itime[0])
-
-    # counter sum
-    cn += 1
-    print(cn)
-
-######## WSP ########
-# initialize time array:
-time_wnd = []
-
-# initialize counter:
-cn = 0
-
-# Loop through filenames
-for f in filenames_wnd:
-
-    # set nc variable :
-    nc_wnd = Dataset(f, "r")
-
-    # call wind velocity components and time:
-    uwnd = nc_wnd.variables["uwnd"][:]
-    vwnd = nc_wnd.variables["vwnd"][:]
-    itime = num2date(nc_wnd.variables["time"][:], nc_wnd.variables["time"].units)
-
-    # compute wind speed:
-    wsp_h = np.sqrt((uwnd ** 2) + (vwnd ** 2))
-
-    # save the hourly wsp array and time:
-    if cn == 0:
-        wsp = np.ma.copy(wsp_h)
-    elif cn > 0:
-        wsp = np.ma.concatenate((wsp, wsp_h), axis=0)
-    time_wnd.append(itime[0])
-
-    # counter sum
-    cn += 1
-    print(cn)
-
-# initialize variables:
+# Initialize variables and constants
+N_swell = np.ma.masked_all([nt, nlat, nlon])
+N_total = np.ma.masked_all([nt, nlat, nlon])
+time = []
 g = 9.81
 
-# compute phase speed:
-cp = g / (2 * np.pi * fp)
+# Loop through filenames:
+for ifile in range(nt):
 
-# compute wave age:
-wave_age = cp / wsp
+    # Set nc variables:
+    nc_wnd = Dataset(filenames_wnd[ifile], "r")
+    nc_fp = Dataset(filenames_fp[ifile], "r")
+
+    # call wind velocity components, peak frequency, and time:
+    uwnd = nc_wnd.variables["uwnd"][:]
+    vwnd = nc_wnd.variables["vwnd"][:]
+    fp = nc_fp.variables["fp"][:]
+    itime = num2date(nc_fp.variables["time"][:], nc_fp.variables["time"].units)
+
+    # close netCDF file
+    nc_wnd.close()
+    nc_fp.close()
+
+    # compute wind speed:
+    wsp = np.sqrt((uwnd ** 2) + (vwnd ** 2))
+
+    # save time:
+    time.append(itime[0])
+
+    # Compute phase speed
+    cp = g / (2 * np.pi * fp)
+
+    # compute wave age:
+    wave_age = cp / wsp
+
+    # Separate Swell and Wind-Sea Events
+    swell_ind = wave_age > 1.2
+
+    # count the number of swell events and wind_sea events
+    N_s = np.sum(swell_ind, axis=0)
+    N_t = np.ma.ones([nlat, nlon]) * np.shape(swell_ind)[0]
+
+    # save number of swell events and total events
+    N_swell[ifile, :, :] = N_s
+    N_total[ifile, :, :] = N_t
 
 # Compute probability of swell:
 
-######## Seasonally ########
 # intialize ordered dictionary
 prob_s = OrderedDict()
-prob_s["p_swell"], prob_s["p_wind"] = [], []
+prob_s["p_month"], prob_s["p_season"] = [], []
+
+######## Seasonally ########
 
 # initialize time indices
-months = np.array([m.month for m in time_c])
+months = np.array([m.month for m in time])
 
 # loop through seasons DJF, MAM, JJA, SON in time series:
 # initialize season variables
@@ -150,35 +131,22 @@ for s in range(0, 4):
     ind = ind_1 | bool_3
 
     # call wave age from season
-    wave_age_s = wave_age[ind, :, :]
+    N_swell_s = N_swell[ind, :, :]
+    N_total_s = N_total[ind, :, :]
 
-    # Separate Swell and Wind-Sea Events
-    swell_ind = wave_age_s > 1.2
-    wind_ind = wave_age_s <= 1.2
-
-    # count the number of swell events and wind_sea events
-    N_swell = np.sum(swell_ind, axis=0)
-    N_wind = np.sum(wind_ind, axis=0)
-    N_total = N_swell + N_wind
-
-    # Compute probability of swell and Wind-Sea
-    p_swell = N_swell / N_total
-    p_wind = N_wind / N_total
+    # Compute probability of swell
+    p_season = N_swell_s / N_total_s
 
     # Save in dictionary:
-    prob_s["p_swell"].append(p_swell)
-    prob_s["p_wind"].append(p_wind)
+    prob_s["p_season"].append(p_season)
 
 # Convert list of 2D arrays to a single 3D array for probability of swell:
-prob_swell_s = np.ma.dstack(prob_s["p_swell"])
+prob_swell_s = np.ma.dstack(prob_s["p_season"])
 
 ######## Monthly ########
-# intialize ordered dictionary
-prob_m = OrderedDict()
-prob_m["p_swell"], prob_m["p_wind"] = [], []
 
 # initialize time indices
-months = np.array([m.month for m in time_c])
+months = np.array([m.month for m in time_wnd])
 
 # loop through months in time series:
 # initialize variables
@@ -193,30 +161,21 @@ for m in range(0, 12):
     # initialize month indices
     ind = months == imonth
 
-    # call wave age from month
-    wave_age_s = wave_age[ind, :, :]
+    # call wave age from season
+    N_swell_m = N_swell[ind, :, :]
+    N_total_m = N_total[ind, :, :]
 
-    # Separate Swell and Wind-Sea Events
-    swell_ind = wave_age_s > 1.2
-    wind_ind = wave_age_s <= 1.2
-
-    # count the number of swell events and wind_sea events
-    N_swell = np.sum(swell_ind, axis=0)
-    N_wind = np.sum(wind_ind, axis=0)
-    N_total = N_swell + N_wind
-
-    # Compute probability of swell and Wind-Sea
-    p_swell = N_swell / N_total
-    p_wind = N_wind / N_total
+    # Compute probability of swell
+    p_month = N_swell_m / N_total_m
 
     # Save in dictionary:
-    prob_m["p_swell"].append(p_swell)
-    prob_m["p_wind"].append(p_wind)
+    prob_s["p_month"].append(p_month)
 
 # Convert list of 2D arrays to a single 3D array for probability of swell:
-prob_swell_m = np.ma.dstack(prob_m["p_swell"])
+prob_swell_m = np.ma.dstack(prob_s["p_month"])
 
 # Set summary variable:
+output = "../data/prob_swell/WW3_probability_swell.nc"
 summary = "Data contained in this netCDF file is derived from the wave hindcast peak wave frequency (fp) and wind speed (WSP) product produced by French Research Institute for Exploitation of the Sea (IFREMER) using the WAVE-height, WATer depth and Current Hindcasting III (WW3) wave model forced by Climate Forecast System Reanalysis (CFSR) winds (ftp://ftp.ifremer.fr/ifremer/ww3/HINDCAST). Thus, this data is an intermediate product. Here, the wave age, defined as the ratio between peak phase speed and wind speed 10 meters above the ocean surface, is calculated across the globe from 66N to 66S over the time period of 1 January 1993 to 31 December 2015 and is used to categorize wave fields as either dominated by swell or wind-sea. For wave age less than or equal to 1.2, the wave field is considered to be dominated by wind-sea. For wave age greater than 1.2, the wave field is considered to be dominated by swell. Probability of swell illustrate the fraction of time the wave field is swell-dominated relative to the total number of wave measurements. Probability of swell is computed seasonally and monthly and are stored in a 3-dimensional (time, latitude, longitude) masked arrays."
 
 # Save seasonal and monthly Probability of Swell data
@@ -227,6 +186,6 @@ save_netcdf_prob_swell(
     lat=lat_wnd,
     monthly_time=np.arange(1, 13, 1),
     seasonal_time=np.arange(1, 4, 1),
-    output="../data/prob_swell/WW3_probability_swell.nc",
+    output=output,
     summary=summary,
 )
