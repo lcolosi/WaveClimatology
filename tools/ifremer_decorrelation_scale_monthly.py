@@ -17,6 +17,7 @@ from netCDF4 import Dataset, num2date
 # my functions
 from data_processing import import_data
 from averaging_stats import monthly_average
+from lsf import least_square_fit
 from decorrelation_scale import decor_scale
 from save_netcdf_fields import add_global_atrributes, save_netcdf_decor_scale
 

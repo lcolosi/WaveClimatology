@@ -40,7 +40,7 @@ def add_global_atrributes(nc, summary):
     ] = "wave and wind climate, Surface gravity waves, Satellite altimetry, Annual cycle, Probability of swell"
     attributes[
         "references"
-    ] = "Colosi, L. V., Villas Boas, A. B., and Gille, S. T. (2020). The Seasonal Cycle of Significant Wave Height in the Ocean: Local vs Remote Forcing. Journal of Geophysical Research: Oceans, 1(1), 1st ser., 1-2. doi:1"
+    ] = "Colosi, L. V., Villas Boas, A. B., and Gille, S. T. (2020). The Seasonal Cycle of Significant Wave Height in the Ocean: Local vs Remote Forcing. Journal of Geophysical Research: Oceans, 1(1), 1st ser., 1-2. doi:"
     attributes[
         "acknowledgement"
     ] = "This work was supported by the NASA SWOT (awards NNX16AH67G and 80NSSC20K1136) and Ocean Vector Winds Science Teams (award 80NSSC19K0059), by a NASA Earth and Space Science Fellowship awarded to Ana Villas B\^oas, and by the Philip and Elizabeth Hiestand Scholars program."
