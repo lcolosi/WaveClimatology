@@ -23,8 +23,8 @@ import cmocean.cm as cmo
 import matplotlib.patches as mpatches
 
 # my functions
-from intermediate_data_import import import_data
-from statistical_moments_temporal import stat_moments_temporal
+from data_processing import import_data
+from averaging_stats import stat_moments_temporal
 import cartopy_figs as cart
 
 # call IFREMER SWH and CCMP2 WSP processed data:
