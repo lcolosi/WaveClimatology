@@ -121,7 +121,7 @@ for f in filenames:
     # set counter
     iday += 1
 
-    # print file name to keep track of the progresso of the function
+    # print file name to keep track of the progression of the function
     print(f)
 
 # Extract data from between -66 to 66 degrees lattude:
@@ -134,7 +134,7 @@ grid_lat = grid_lat[ii]
 
 # Loop through years to save binned swhcor data:
 
-# set year time arrays that correspond to the year at which swh data point was collected
+# Set year time arrays that correspond to the year at which swh data point was collected
 years = np.array([y.year for y in time_array])
 
 # Convert time_array to an array:

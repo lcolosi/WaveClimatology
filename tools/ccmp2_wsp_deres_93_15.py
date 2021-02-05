@@ -91,7 +91,6 @@ for f in filenames:
 
     # counter sum
     i += 1
-    print(i)
 
 # Extract latitudes from -66 to 66 degrees:
 lat_dr = lat_dr[trunc : len(lat_dr) - trunc]
