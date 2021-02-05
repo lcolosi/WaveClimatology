@@ -2,7 +2,7 @@
 
 # Source Code for
 
-Luke V Colosi, Sarah T Gille, and Ana B Villas Bôas. The seasonal cycle of significant waveheight in the ocean: Local vs remote forcing. Journal of Geophysical Research: Oceans, submitted.
+Luke V Colosi, Sarah T Gille, and Ana B Villas Bôas. The seasonal cycle of significant waveheight in the ocean: Local vs remote forcing. Journal of Geophysical Research: Oceans, submitted. Preprint available from [ESSOAr](https://www.essoar.org/doi/10.1002/essoar.10506029.1).
 
 # Abstract
 
