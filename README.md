@@ -58,4 +58,4 @@ from the project root to create the environment from the .yml file and run `cond
 
 If you wish to use the code from this repository, you may cite it as: 
 
-Colosi, Luke V. (2021, January 20). Source code for: 'The Seasonal Cycle of Significant Wave Height in the Ocean:  Local vs Remote Forcing'. Zenodo. (insert zenodo url)
+Colosi, Luke V. (2021, January 20). Source code for: 'The Seasonal Cycle of Significant Wave Height in the Ocean:  Local vs Remote Forcing'. Zenodo. (https://doi.org/10.5281/zenodo.4505581)
