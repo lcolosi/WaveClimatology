@@ -1,4 +1,5 @@
-[![DOI](https://zenodo.org/badge/307830945.svg)](https://zenodo.org/badge/latestdoi/307830945)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4505581.svg)](https://doi.org/10.5281/zenodo.4505581)
+
 
 # Source Code for
 
