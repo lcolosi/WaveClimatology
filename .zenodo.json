@@ -5,14 +5,15 @@
       "name": "Colosi, Luke V.",
       "affiliation": "Scripps Institution of Oceanography - UC San Diego",
       "orcid": "0000-0002-0571-4358"
-    },
-    {
-      "name": "Villas Boas, Ana B.",
-      "affiliation": "Scripps Institution of Oceanography - UC San Diego",
-      "orcid": "0000-0001-6767-6556"
     }
   ],
   "contributors": [
+    {
+      "type": "Supervisor",
+      "name": "Villas Bôas, Ana B.",
+      "affiliation": "Scripps Institution of Oceanography - UC San Diego",
+      "orcid": "0000-0001-6767-6556"
+    },
     {
       "type": "Sponsor",
       "name": "National Aeronautics and Space Administration, grant 80NSSC20K1136"
