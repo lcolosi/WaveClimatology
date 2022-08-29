@@ -4,7 +4,7 @@
 # Source Code for
 
 Colosi, L. V., Villas Bôas, A. B., & Gille, S. T. (2021). The seasonal cycle of significant wave height in the ocean: Local versus remote forcing. Journal
-of Geophysical Research: Oceans, 126, e2021JC017198. https://doi. org/10.1029/2021JC017198
+of Geophysical Research: Oceans, 126, e2021JC017198. https://doi.org/10.1029/2021JC017198
 
 # Abstract
 
