@@ -27,11 +27,11 @@ This work was supported by the NASA SWOT (awards NNX16AH67G and 80NSSC20K1136) a
 
 # How to use this repository
 
-All figures in Colosi et al. (2021) can be reproduced using the Python scripts from this repository and the processed SWH, WSP and fp [data](https://library.ucsd.edu/dc/collection/bb2226641g). To do so, follow these steps:
+All figures in Colosi et al. (2021) can be reproduced using the Python scripts from this repository and the processed [data](https://library.ucsd.edu/dc/collection/bb2226641g). To do so, follow these steps:
 
 1. Make a local copy of this repository by either cloning or downloading it.
 
-2. Download the processed SWH, WSP and fp [data](https://library.ucsd.edu/dc/object/bb4445091v), untar the files, and move all seven directories to `data` in the project root. After doing so, your directory tree should look like this:
+2. Download the processed [data](https://library.ucsd.edu/dc/object/bb4445091v), untar the files, and move all seven directories to `data` in the project root. After doing so, your directory tree should look like this:
 
 ```
 WaveClimatology/
