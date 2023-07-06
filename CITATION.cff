@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "Source code for: The Seasonal Cycle of Significant Wave Height in the Ocean: Local vs Remote Forcing'"
+message: Please cite this code using the metadata below.
+authors:
+  - given-names: Luke V.
+    family-names: Colosi
+    affiliation: Scripps Institution of Oceanography 
+    orcid: https://orcid.org/0000-0002-0571-4358
+version: 0.2
+doi: 10.5281/zenodo.4505581
+date-released: 2021-02-16
+repository-code: https://github.com/lcolosi/WaveClimatology
+license: mit
+references:
+  - title: "Data from: The seasonal cycle of significant wave height in the ocean: Local versus remote forcing"
+    type: Data
+    doi: 10.6075/J06W9B6H
